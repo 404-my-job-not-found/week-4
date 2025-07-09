@@ -1,16 +1,17 @@
-## N주차
+## 4주차
 
 ### 기간
 
-YYYY.MM.DD - YYYY.MM.DD
+2025.07.09 - 2025.07.16
 
 ### 문제
 
-1. [문제명](링크)
-2. [문제명](링크)
-3. [문제명](링크)
-4. [문제명](링크)
-5. [문제명](링크)
+1. [Validate Binary Search Tree](https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/625/)
+2. [Symmetric Tree](https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/627/)
+3. [Binary Tree Level Order Traversal](https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/628/)
+4. [Convert Sorted Array to Binary Search Tree](https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/631/)
+5. [Merge Sorted Array](https://leetcode.com/explore/interview/card/top-interview-questions-easy/96/sorting-and-searching/587/)
+6. [First Bad Version](https://leetcode.com/explore/interview/card/top-interview-questions-easy/96/sorting-and-searching/774/)
 
 ### 규칙
 
