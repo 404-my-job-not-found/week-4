@@ -15,12 +15,6 @@ var merge = function (nums1, m, nums2, n) {
     k--;
   }
 
-  if (i >= 0) {
-    for (; i >= 0; i--) {
-      nums1[k] = nums1[i];
-      k--;
-    }
-  }
   if (j >= 0) {
     for (; j >= 0; j--) {
       nums1[k] = nums2[j];
