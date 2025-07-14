@@ -1,0 +1,15 @@
+function sortedArrayToBST(nums: number[]): TreeNode | null {
+  function helper(left: number, right: number): TreeNode | null {
+    if (left > right) return null;
+
+    const mid = Math.floor((left + right) / 2);
+    const node = new TreeNode(nums[mid]);
+
+    node.left = helper(left, mid - 1);
+    node.right = helper(mid + 1, right);
+
+    return node;
+  }
+
+  return helper(0, nums.length - 1);
+}
