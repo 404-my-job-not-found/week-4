@@ -18,9 +18,9 @@ You are given an API bool isBadVersion(version) which returns whether version is
 // 우선 테스트 할 수 있게 isBadVersion 함수를 만들었습니다.
 // version이 4이상이면 true를 주고 그이하는 false를 주게끔 만들어 시각화를 해봤습니다.
 // output: [false, false, false, true, true]
-// function isBadVersion(version: number): boolean {
-//   return version >= 4;
-// }
+function isBadVersion(version: number): boolean {
+  return version >= 4;
+}
 
 // var solution = function (isBadVersion: any) {
 //   return function (n: number): number[] {
@@ -34,14 +34,36 @@ You are given an API bool isBadVersion(version) which returns whether version is
 // findIndex를 사용하여 처음에 true가 나오는 index를 찾고 원하는 값을 출력하도록 만들었습니다.
 // findIndex는 원하는 값이 나오면 바로 종료하기 떄문에 문제에서 요구하는 API 호출 횟수를 최소화를 할 수 있지 않을까 싶습니다.
 // 라고 생각했지만 n = 2126753390 , bad = 1702766719 일때 FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory가 떠서 fail입니다
-function isBadVersion(version: number): boolean {
-  return version >= 4;
-}
+
+// var solution = function (isBadVersion: any) {
+//   return function (n: number): number {
+//     const testArray = Array.from({ length: n }, (_, i) => i + 1);
+//     return testArray.findIndex(version => isBadVersion(version)) + 1;
+//   };
+// };
+
+// 두 번째 시도
+// 스택오버플로우가 생기는 경우는 대부분 중간에서 반 자르고 확인하고 좌우 중 하나를 버리고 다시 확인하는 방식으로 푸는게 맞지 않을까 싶습니다
+// 이진 탐색 알고리즘이 되겠군요
+// 중간에서 반 자르려면 시작 부분과 끝부분이 필요하기 때문에 start와 end를 사용했고
+// 우선 계속 반자르고 확인해야하니 while문을 사용하고 종료 조건은 start와 end가 같아지면 종료하도록 했습니다.
+// 중간 값을 구하고 그 값이 true인지 false인지 확인하고 좌우 중 하나를 버리고 점점 좁혀가면서 찾아가는 방식입니다.
 
 var solution = function (isBadVersion: any) {
   return function (n: number): number {
-    const testArray = Array.from({ length: n }, (_, i) => i + 1);
-    return testArray.findIndex(version => isBadVersion(version)) + 1;
+    let start = 1;
+    let end = n;
+
+    while (start < end) {
+      const mid = Math.floor((start + end) / 2);
+      if (isBadVersion(mid)) {
+        end = mid;
+      } else {
+        start = mid + 1;
+      }
+    }
+
+    return start;
   };
 };
 
